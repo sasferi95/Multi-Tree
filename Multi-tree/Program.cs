@@ -53,6 +53,7 @@ namespace Multi_tree
                 Console.WriteLine("To select item use \"cs x\" command. Where x is the id of the Element.");
                 Console.WriteLine("To expand/collapse item use \"ce x\" command. Where x is the id of the Element.");
                 Console.WriteLine("Only visible elements properties can be changed.");
+                Console.WriteLine("To close the app use exit command.");
                 Console.WriteLine(line);
                 string command = Console.ReadLine();
 
