@@ -1,7 +1,0 @@
-C:\Users\Feri\source\repos\Multi-tree\Multi-tree\bin\Debug\Multi-tree.exe.config
-C:\Users\Feri\source\repos\Multi-tree\Multi-tree\bin\Debug\Multi-tree.exe
-C:\Users\Feri\source\repos\Multi-tree\Multi-tree\bin\Debug\Multi-tree.pdb
-C:\Users\Feri\source\repos\Multi-tree\Multi-tree\obj\Debug\Multi-tree.csprojAssemblyReference.cache
-C:\Users\Feri\source\repos\Multi-tree\Multi-tree\obj\Debug\Multi-tree.csproj.CoreCompileInputs.cache
-C:\Users\Feri\source\repos\Multi-tree\Multi-tree\obj\Debug\Multi-tree.exe
-C:\Users\Feri\source\repos\Multi-tree\Multi-tree\obj\Debug\Multi-tree.pdb
