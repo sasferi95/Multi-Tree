@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Deployment.Internal;
+using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading;
@@ -26,15 +27,19 @@ namespace Multi_tree
                 new Element(7, 3, "James Rhodes"),
                 new Element(8, 1, "Scott Lang"),
                 new Element(9, 9, "Doctor Strange"),
+                new Element(10, 0, "Peter Parker"),
             }; 
             
             
             TreeManager treeManager=new TreeManager(elements);
             treeManager.BuildTree();
             Menu(treeManager);
-            Console.ReadLine();
         }
 
+        /// <summary>
+        /// displays the tree and wait for commands
+        /// </summary>
+        /// <param name="treeManager">Tree manager that contains the tree that will be displayed and allows the tree operations</param>
         static void Menu(TreeManager treeManager)
         {
             bool exit = false;
@@ -46,36 +51,40 @@ namespace Multi_tree
                 
                 string command = Console.ReadLine();
 
-                string[] commandPieces = command.Split(' ');
-                if (CheckInput(commandPieces))
-                {
-                    int treeElementId = int.Parse(commandPieces[1]);
-                    switch (commandPieces[0])
-                    {
-                        case "cs":
-                            treeManager.ChangeTreeElementSelection(treeElementId);
-                            break;
-
-                        case "ce":
-                            treeManager.ChangeTreeElementExpandStatus(treeElementId);
-                            break;
-
-                        case "exit":
-                            exit = true;
-                            break;
-                        default:
-                            Console.WriteLine("Invalid command");
-                            break;
-                    }
-                }
+                if (command == "exit")
+                    exit = true;
                 else
-                    Console.WriteLine("Invalid command");
+                {
+                    string[] commandPieces = command.Split(' ');
+                    if (CheckInput(commandPieces))
+                    {
+                        int treeElementId = int.Parse(commandPieces[1]);
+                        switch (commandPieces[0])
+                        {
+                            case "cs":
+                                treeManager.ChangeTreeElementSelection(treeElementId);
+                                break;
+
+                            case "ce":
+                                treeManager.ChangeTreeElementExpandStatus(treeElementId);
+                                break;
+                        }
+                    }
+                    else
+                        Console.WriteLine("Invalid command");
+                }
+                
             }
         }
 
+        /// <summary>
+        /// checks if the given command is valid or not 
+        /// </summary>
+        /// <param name="command">[0] command, [1] element id</param>
+        /// <returns>the command is valid or invalid</returns>
         static bool CheckInput(string[] command)
         {
-            return (command[0] == "cs" || command[0] == "ce") && int.TryParse(command[1],out int b) || command[0] == "exit" ;
+            return (command[0] == "cs" || command[0] == "ce") && int.TryParse(command[1],out int b);
         }
     }
 

@@ -9,6 +9,9 @@ namespace Multi_tree
     public enum ExpansionStates { Expanded, Collapsed }
     public enum SelectionStates { NotSelected, Selected, RerecursivelySelected }
 
+    /// <summary>
+    /// Represents an element in the tree
+    /// </summary>
     public class Element
     {
         public int ElementId { get; set; }
@@ -17,12 +20,7 @@ namespace Multi_tree
         public ExpansionStates ExpansionState { get; set; }
         public SelectionStates SelectionState { get; set; }
 
-        List<Element> children;
-        public List<Element> Children 
-        {
-            get { return children; }
-            set { children = value; } 
-        }
+        public List<Element> Children { get; set; }
         string content;
         public string Content 
         { 
@@ -35,10 +33,9 @@ namespace Multi_tree
             this.ParentId = parentId;
             this.content = content;
 
-
             this.ExpansionState = ExpansionStates.Expanded;
             this.SelectionState = SelectionStates.NotSelected;
-            this.children = new List<Element> { };
+            this.Children = new List<Element> { };
         }
     }
 }
