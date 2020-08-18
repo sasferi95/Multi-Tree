@@ -75,7 +75,7 @@ namespace Multi_tree
 
         static bool CheckInput(string[] command)
         {
-            return (command[0] == "cs" || command[0] == "ce") && int.TryParse(command[1],out int b) || command[] == "exit" ;
+            return (command[0] == "cs" || command[0] == "ce") && int.TryParse(command[1],out int b) || command[0] == "exit" ;
         }
     }
 
