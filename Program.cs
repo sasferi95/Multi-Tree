@@ -43,12 +43,17 @@ namespace Multi_tree
         static void Menu(TreeManager treeManager)
         {
             bool exit = false;
-
+            string line=new string('-', 20);
             while (!exit)
-            { 
+            {
                 Console.Clear();
                 treeManager.DisplayTree();
-                
+                Console.WriteLine();
+                Console.WriteLine(line);
+                Console.WriteLine("To select item use \"cs x\" command. Where x is the id of the Element.");
+                Console.WriteLine("To expand/collapse item use \"ce x\" command. Where x is the id of the Element.");
+                Console.WriteLine("Only visible elements properties can be changed.");
+                Console.WriteLine(line);
                 string command = Console.ReadLine();
 
                 if (command == "exit")
@@ -58,16 +63,24 @@ namespace Multi_tree
                     string[] commandPieces = command.Split(' ');
                     if (CheckInput(commandPieces))
                     {
-                        int treeElementId = int.Parse(commandPieces[1]);
-                        switch (commandPieces[0])
+                        try
                         {
-                            case "cs":
-                                treeManager.ChangeTreeElementSelection(treeElementId);
-                                break;
+                            int treeElementId = int.Parse(commandPieces[1]);
+                            switch (commandPieces[0])
+                            {
+                                case "cs":
+                                    treeManager.ChangeTreeElementSelection(treeElementId);
+                                    break;
 
-                            case "ce":
-                                treeManager.ChangeTreeElementExpandStatus(treeElementId);
-                                break;
+                                case "ce":
+                                    treeManager.ChangeTreeElementExpandStatus(treeElementId);
+                                    break;
+                            }
+                        }
+                        catch(Exception e)
+                        {
+                            Console.WriteLine(e.Message);
+                            Console.ReadLine();
                         }
                     }
                     else
